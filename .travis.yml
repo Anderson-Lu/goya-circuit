@@ -3,6 +3,8 @@ sudo: false
 go:
  - "1.17"
  - "1.16"
+ - dev
+ - master
  
 script:
   - go test -v *.go -race -coverprofile=coverage.txt -covermode=atomic
