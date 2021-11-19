@@ -26,6 +26,23 @@ func registConf() {
 }
 ```
 
+or like this:
+
+```go
+func registConf() {
+	conf := circuit.NewCircuitConf(
+		WithID("c1"),
+		WithMaxFailRate(0.1),
+		WithMaxQPS(1000),
+		WithQPSLimitOption(0),
+		WithSecondWindow(1),
+		WithTimeout(10001),
+	)
+	circuit.GetCircuitManager().RegistCircuit(conf)
+}
+```
+
+
 Then define your execution method and fallback method like this:
 
 ```go
