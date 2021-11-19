@@ -64,15 +64,6 @@ func (s *BucketLinklist) UpsertLast(metric *SecondMetric) {
 		return
 	}
 
-	// only one noe and insert it
-	if s.tail == s.head {
-		n.pre = s.head
-		s.head.next = n
-		s.size++
-		s.tail = n
-		return
-	}
-
 	n.pre = s.tail
 	s.tail.next = n
 	s.tail = n

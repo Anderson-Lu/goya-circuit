@@ -25,3 +25,17 @@ type CircuitConf struct {
 	MaxQPS         int
 	QPSLimitOption int
 }
+
+func NewCircuitConf(opts ...CircuitConfOption) *CircuitConf {
+	conf := &CircuitConf{
+		ID:            "",
+		SecondsWindow: _defaultSecondsWindow,
+		MaxFailRate:   _defaultFailRate,
+		Timeout:       _defaultTimeout,
+		MaxQPS:        _defaultMaxQPS,
+	}
+	for _, v := range opts {
+		v(conf)
+	}
+	return conf
+}
